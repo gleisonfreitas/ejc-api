@@ -1,0 +1,1 @@
+ALTER TABLE patrimonio ADD quantidade int(11) AFTER valor;

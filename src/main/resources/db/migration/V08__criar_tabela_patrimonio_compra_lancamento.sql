@@ -1,0 +1,33 @@
+CREATE TABLE patrimonio(
+	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(100) NOT NULL,
+	responsavel VARCHAR(50) NOT NULL,
+	data_compra DATE,
+	valor DECIMAL(10,2) NOT NULL,
+	estado VARCHAR(20) NOT NULL,
+	numero_serie VARCHAR(15),
+	local VARCHAR(50) NOT NULL,
+	codigo_igreja BIGINT(20) NOT NULL,
+  	FOREIGN KEY (codigo_igreja) REFERENCES igreja(codigo)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE compra(
+	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(100) NOT NULL,
+	unidade VARCHAR(30) NOT NULL,
+	valor DECIMAL(10,2) NOT NULL,
+	quantidade DECIMAL(10,2) NOT NULL,
+	codigo_ejc BIGINT(20) NOT NULL,
+  	FOREIGN KEY (codigo_ejc) REFERENCES ejc(codigo)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE lancamento(
+	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(100) NOT NULL,
+	data DATE NOT NULL,
+	valor DECIMAL(10,2) NOT NULL,
+	tipo VARCHAR(20) NOT NULL,
+	observacao VARCHAR(150),
+	codigo_ejc BIGINT(20) NOT NULL,
+  	FOREIGN KEY (codigo_ejc) REFERENCES ejc(codigo)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

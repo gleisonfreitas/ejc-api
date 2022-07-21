@@ -1,0 +1,1 @@
+alter table historico modify equipe VARCHAR(50);
